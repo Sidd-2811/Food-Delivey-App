@@ -1,0 +1,43 @@
+import React from 'react'
+import { Card, Col } from 'react-bootstrap'
+import {Link} from "react-router-dom"
+
+function Cards({image,rating,title,paragraph,price}) {
+  return (
+    <Col sm={3} lg={4} xl={3} className='mb-4'>
+          <Card className='overflow-hidden'>
+            {/* because hmne zoom effect diya hai hover pe taki jb zoom ho to image dimension ke bhar jaye to visible na ho */}
+          <div className='overflow-hidden'>
+          <Card.Img variant="top" src={image} />
+          </div>
+       <Card.Body>
+
+        <div className='d-flex align-items-center justify-between'>
+              <div className='item_rating'>Rating</div>
+              <div className='wishlist'>
+              <i class="bi bi-heart"></i>
+              </div>
+        </div>
+
+        <Card.Title>{title}</Card.Title>
+        <Card.Text>{paragraph} </Card.Text>
+        <div className='d-flex align-items-center justify-between'>
+            <div className='menu_price'>
+              <h5 className='mb-0'>${price}</h5>
+            </div>
+            {/* add to card button */}
+            <div className='add_to_card'>
+                <Link to='/'>
+                <i class="bi bi-bag me-2"></i>
+                Add to Cart
+                  </Link>
+            </div>
+        </div>
+      </Card.Body>
+    </Card>
+
+    </Col>
+  )
+}
+
+export default Cards
