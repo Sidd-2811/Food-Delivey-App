@@ -9,6 +9,7 @@ import Image6 from '../../assets/menu/burger-16.jpg'
 import Image7 from '../../assets/menu/burger-17.jpg'
 import Image8 from '../../assets/menu/burger-18.jpg'
 import Cards from '../../components/Layouts/Cards'
+import { Link } from 'react-router-dom'
 
 // Mock Data Cards
 const mockData = [
@@ -79,14 +80,33 @@ const mockData = [
   // Add more mock data objects as needed
 ];
 
+  // Rating Logical Data
+  const renderRatingIcons = (rating)=>{
+    // empty array me data store karte chalenge
+    const stars = [];
+    for(let i=0;i<5;i++){
+      if(rating > 0.5){
+        stars.push(<i key={i} className='bi bi-star-fill'></i>)
+        rating--;
+      }
+      else if(rating > 0 && rating < 1){
+        stars.push(<i key={"half"} className='bi bi-star-half'></i>)
+        rating--;
+      }
+      else{
+        stars.push(<i key={`empty${i}`} className='bi bi-star'></i>)
+      }
+    }
+    return stars;
+  }
 function Section3() {
   return (
     <section className='menu_section'>
         <Container>
             <Row>
-                <Col lg={{span:8,offset:2}}>
+                <Col lg={{span:8,offset:2}} className='text-center mb-5'>
                     <h2>Our Crazy Burgers</h2>
-                    <p>The perfect burger has no shape , no form, no boundaries. It's a culinary experience that transcends the ordinary. </p>
+                    <p className='para'>The perfect burger has no shape , no form, no boundaries. It's a culinary experience that transcends the ordinary. </p>
                 </Col>
             </Row>
             {/* Accessing Mock Data */}
@@ -100,9 +120,33 @@ function Section3() {
                   title={cardData.title}
                   paragraph={cardData.paragraph}
                   price={cardData.price}
-                  // renderRatingIcons={renderRatingIcons}
+                  renderRatingIcons={renderRatingIcons}
                 />
               )}
+            </Row>
+            <Row className='pt-5'>
+              <Col sm={6} lg={5}>
+              {/* badi screeen k baad na dikhe isliye mb-md-0 */}
+                <div className="ads_box ads_img1 mb-5 mb-md-0">
+                    <h4 className='mb-0'>Get Your Offer</h4>
+                    <h5>Cheese Fries</h5>
+                    {/* rounded-0 means border-radius : none */}
+                    <Link to='/' className='btn btn_red px-4 rounded-0'>
+                    Learn More
+                    </Link>
+                </div>
+              </Col>
+              <Col sm={6} lg={7}>
+              {/* badi screeen k baad na dikhe isliye mb-md-0 */}
+                <div className="ads_box ads_img2">
+                    <h4 className='mb-0'>Get Your Offer</h4>
+                    <h5>Cheese Fries</h5>
+                    {/* rounded-0 means border-radius : none */}
+                    <Link to='/' className='btn btn_red px-4 rounded-0'>
+                    Learn More
+                    </Link>
+                </div>
+              </Col>
             </Row>
         </Container>
     </section>
