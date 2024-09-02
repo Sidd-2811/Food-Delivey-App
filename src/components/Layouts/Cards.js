@@ -4,7 +4,7 @@ import {Link} from "react-router-dom"
 
 function Cards({image,rating,title,paragraph,price,renderRatingIcons}) {
   return (
-    <Col sm={3} lg={4} xl={3} className='mb-4'>
+    <Col sm={6} lg={4} xl={3} className='mb-4'>
           <Card className='overflow-hidden'>
             {/* because hmne zoom effect diya hai hover pe taki jb zoom ho to image dimension ke bhar jaye to visible na ho */}
           <div className='overflow-hidden'>
